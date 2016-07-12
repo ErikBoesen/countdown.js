@@ -1,2 +1,2 @@
 # countdown.js
-Small JS library for countdown timers.
+`countdown.js` is a small JS library for countdown timers. 
