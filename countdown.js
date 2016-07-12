@@ -1,8 +1,9 @@
-/*****************************************************************
- || countdown.js by Erik Boesen, https://github.com/ErikBoesen. ||
- ||  Copyright (c) 2016 Erik Boesen. Licensed under the GPLv3.  ||
- ||        Please keep this copyright information here.         ||
- *****************************************************************/
+/***********************************************
+ ||    countdown.js (c) 2016 Erik Boesen      ||
+ ||   github.com/ErikBoesen/countdown.js.     ||
+ || Licensed under MIT License (See LICENSE). ||
+ ||          Please keep this here.           ||
+ ***********************************************/
 
 var events = [
     {
@@ -28,34 +29,42 @@ var cd = {
 	s: document.getElementById('cd-seconds'),
 };
 
-// variables for time units
-var days, hours, minutes, seconds;
+// Variables for time units
+var d, h, m, s;
 
 // Update countdown every 100ms (.1s)
 setInterval(function() {
 	// Find the amount of seconds between now and target
 	var now = new Date().getTime();
-	var secondsLeft = (events[0].date - now) / 1000;
-	if (now > events[0].date) secondsLeft = 0;
+    // Calculate number of total Seconds REMaining until event..
+    // As larger units are calculated, this will be decreased.
+	var srem = (events[0].date - now) / 1000;
+    // If the event has passed, zero everything out.
+	if (now > events[0].date) srem = 0;
 
 	// Calculate times left
-	days = parseInt(secondsLeft / 86400);
-	if (days.toString().length < 2) days = '0' + days.toString();
-	secondsLeft = secondsLeft % 86400;
+	d = parseInt(srem / 86400);
+    // Remove those days from the remaining time.
+	srem = srem % 86400;
 
-	hours = parseInt(secondsLeft / 3600);
-	if (hours.toString().length < 2) hours = '0' + hours.toString();
-	secondsLeft = secondsLeft % 3600;
+	h = parseInt(srem / 3600);
+    // Remove hours from the remaining time.
+	srem = srem % 3600;
 
-	minutes = parseInt(secondsLeft / 60);
-	if (minutes.toString().length < 2) minutes = '0' + minutes.toString();
-	seconds = parseInt(secondsLeft % 60);
-	if (seconds.toString().length < 2) seconds = '0' + seconds.toString();
+	m = parseInt(srem / 60);
+    // Remove the minutes, this will result in the final 0-60s count.
+	s = parseInt(srem % 60);
+
+    // Add leading zeroes
+	if (d.toString().length < 2) d = '0' + d.toString();
+	if (h.toString().length < 2) h = '0' + h.toString();
+	if (m.toString().length < 2) m = '0' + m.toString();
+	if (s.toString().length < 2) s = '0' + s.toString();
 
 	// Display times left
 	cd.title.innerHTML = 'Time left until ' + events[0].name + ':';
-	cd.d.innerHTML = days;
-	cd.h.innerHTML = hours;
-	cd.m.innerHTML = minutes;
-	cd.s.innerHTML = seconds;
+	cd.d.innerHTML = d;
+	cd.h.innerHTML = h;
+	cd.m.innerHTML = m;
+	cd.s.innerHTML = s;
 }, 100);

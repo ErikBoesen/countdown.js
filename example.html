@@ -2,23 +2,23 @@
 
 <html>
 
-<head>
-    <title>Soon</title>
-</head>
-
 <body>
+    <!-- This is an example title. It, and any other element with the ID #cd-title,
+        will be filled with "Time left until [name of event]:" -->
     <h1 id="cd-title"></h1>
     <table>
-        <tbody>
-            <thead>
-                <tr>
-                    <th>Days</th>
-                    <th>Hours</th>
-                    <th>Minutes</th>
-                    <th>Seconds</th>
-                </tr>
-            </thead>
+        <!-- This <thead> is unnecesary and is just present in this example for decoration. -->
+        <thead>
             <tr>
+                <th>Days</th>
+                <th>Hours</th>
+                <th>Minutes</th>
+                <th>Seconds</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <!-- Counters must have id #cd-[unit] -->
                 <td id="cd-days"></td>
                 <td id="cd-hours"></td>
                 <td id="cd-minutes"></td>
