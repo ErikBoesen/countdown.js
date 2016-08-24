@@ -9,7 +9,7 @@ countdown.js is a small JS library for countdown timers.
 See `example.html` for an example.
 
 ## Examples
-* [Team 1418](https://1418.team/soon)
+* [Team 1418](http://1418.team/soon)
 
 ## Author
 * [Erik Boesen](https://github.com/ErikBoesen)
